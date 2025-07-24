@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-translate="title">My Virtual Airline</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    #lang-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background-color: #0055aa;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      font-size: 0.9rem;
+      border-radius: 6px;
+      cursor: pointer;
+      z-index: 1000;
+      transition: background-color 0.3s ease;
+    }
+    #lang-toggle:hover {
+      background-color: #0077cc;
+    }
+
+    header.header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 10px 20px;
+      background-color: #003366;
+      color: white;
+    }
+
+    header .logo {
+      position: absolute;
+      left: 20px;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    nav.nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav.nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 6px 10px;
+    }
+
+    nav.nav a:hover,
+    nav.nav a.active {
+      background-color: #0077cc;
+      border-radius: 4px;
+    }
+
+    .main {
+      padding: 60px 20px;
+      text-align: center;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      /* transition removed */
+    }
+
+    .main h1 {
+      font-size: 48px;
+      margin-bottom: 408px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .main p {
+      font-size: 20px;
+      margin-bottom: 30px;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .main-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 28px;
+      font-size: 16px;
+      color: white;
+      background-color: #0055aa;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      font-weight: 600;
+    }
+
+    .main-btn:hover {
+      background-color: #0077cc;
+      transform: scale(1.05);
+    }
+
+    /* Стрелки */
+    .slider-controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 20px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .main:hover .slider-controls {
+      opacity: 1;
+    }
+
+    .slider-btn {
+      font-size: 2.5rem;
+      background: none;
+      color: white;
+      border: none;
+      cursor: pointer;
+      pointer-events: auto;
+      transition: transform 0.3s ease;
+      user-select: none;
+    }
+
+    .slider-btn:hover {
+      transform: scale(1.3);
+    }
+
+    .footer {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      border-top: 2px solid #0055aa;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo" data-translate="logo">My Virtual Airline</div>
+  <nav class="nav">
+    <a href="index.html" data-translate="home">Home</a>
+    <a href="about.html" data-translate="about">About</a>
+    <a href="fleet.html" data-translate="fleet">Fleet</a>
+    <a href="statistics.html" data-translate="statistics">Statistics</a>
+    <a href="destinations.html" data-translate="destinations">Destinations</a>
+    <a href="https://discord.gg/C7RzPVF7eA" target="_blank" rel="noopener noreferrer" data-translate="join_us">Join Us</a>
+  </nav>
+  <button id="lang-toggle">Русский</button>
+</header>
+
+<section class="main" id="main-section">
+  <div class="slider-controls">
+    <button class="slider-btn" id="prevBtn">&#10094;</button>
+    <button class="slider-btn" id="nextBtn">&#10095;</button>
+  </div>
+  <h1 data-translate="welcome_title">Welcome Aboard</h1>
+  <p data-translate="welcome_text">Experience the skies with professionalism and passion.</p>
+  <a href="about.html" class="main-btn" data-translate="learn_more">Learn More About Us</a>
+</section>
+
+<footer class="footer">
+  <p data-translate="footer_text">© 2025 SkyFlight • Powered by Open Source</p>
+</footer>
+
+<script src="lang.js"></script>
+
+<script>
+  const backgrounds = [
+    'aboutus14.JPG',
+    'spb.png',
+  ];
+
+  let currentBgIndex = 0;
+  const mainSection = document.getElementById('main-section');
+
+  function updateBackground(index) {
+    mainSection.style.backgroundImage = `url('${backgrounds[index]}')`;
+  }
+
+  function nextSlide() {
+    currentBgIndex = (currentBgIndex + 1) % backgrounds.length;
+    updateBackground(currentBgIndex);
+  }
+
+  function prevSlide() {
+    currentBgIndex = (currentBgIndex - 1 + backgrounds.length) % backgrounds.length;
+    updateBackground(currentBgIndex);
+  }
+
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    nextSlide();
+    resetTimer();
+  });
+
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    prevSlide();
+    resetTimer();
+  });
+
+  updateBackground(currentBgIndex);
+
+  let sliderInterval = setInterval(nextSlide, 10000);
+
+  function resetTimer() {
+    clearInterval(sliderInterval);
+    sliderInterval = setInterval(nextSlide, 10000);
+  }
+</script>
+
+</body>
+</html>

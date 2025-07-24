@@ -1,0 +1,22 @@
+{
+  "pilots": [
+    {
+      "name": "JohnDoe",
+      "hours": 120,
+      "flights": 45,
+      "rank": "Captain"
+    },
+    {
+      "name": "JaneSmith",
+      "hours": 95,
+      "flights": 38,
+      "rank": "First Officer"
+    },
+    {
+      "name": "AlexPilot",
+      "hours": 75,
+      "flights": 25,
+      "rank": "Second Officer"
+    }
+  ]
+}

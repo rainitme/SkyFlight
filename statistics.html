@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-translate="statistics_title">Statistics - My Virtual Airline</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Шапка */
+    header.header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 10px 20px;
+      background-color: #003366;
+      color: white;
+    }
+    header .logo {
+      position: absolute;
+      left: 20px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      cursor: default;
+      display: block;
+    }
+    nav.nav {
+      display: flex;
+      gap: 20px;
+    }
+    nav.nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 6px 10px;
+    }
+    nav.nav a:hover,
+    nav.nav a.active {
+      background-color: #0077cc;
+      border-radius: 4px;
+    }
+
+    /* Кнопка переключения языка */
+    #lang-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background-color: #0055aa;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      font-size: 0.9rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 700;
+      z-index: 1000;
+      transition: background-color 0.3s ease;
+    }
+    #lang-toggle:hover {
+      background-color: #0077cc;
+    }
+
+    /* Стиль секции и таблицы */
+    section.statistics-bg {
+      padding: 40px 20px;
+      color: #222;
+    }
+    section.info-section h2 {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    section.info-section p {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #555;
+      font-size: 1.1rem;
+    }
+    table.stats-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 1rem;
+    }
+    table.stats-table thead tr {
+      background-color: #0055aa;
+      color: white;
+    }
+    table.stats-table th,
+    table.stats-table td {
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+    table.stats-table tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo" data-translate="logo_text">My Virtual Airline</div>
+  <nav class="nav">
+    <a href="index.html" data-translate="home">Home</a>
+    <a href="about.html" data-translate="about">About</a>
+    <a href="fleet.html" data-translate="fleet">Fleet</a>
+    <a href="statistics.html" class="active" data-translate="statistics">Statistics</a>
+    <a href="destinations.html" data-translate="destinations">Destinations</a>
+    <a href="https://discord.gg/C7RzPVF7eA" target="_blank" rel="noopener noreferrer" data-translate="join_us">Join Us</a>
+  </nav>
+  <button id="lang-toggle">Русский</button>
+</header>
+
+<section class="statistics-bg">
+  <section class="info-section">
+    <h2 data-translate="pilot_statistics">Pilot Statistics</h2>
+    <p data-translate="pilot_statistics_desc">Explore detailed stats for our active pilots.</p>
+
+    <table class="stats-table">
+      <thead>
+        <tr>
+          <th data-translate="table_pilot">Pilot</th>
+          <th data-translate="table_flight_hours">Flight Hours</th>
+          <th data-translate="table_flights">Flights</th>
+          <th data-translate="table_rank">Rank</th>
+        </tr>
+      </thead>
+      <tbody id="pilot-stats-body">
+        <tr><td colspan="4">Loading...</td></tr>
+      </tbody>
+    </table>
+  </section>
+</section>
+
+<footer class="footer">
+  <p data-translate="footer_text">© 2025 My Virtual Airline • Powered by Open Source</p>
+</footer>
+
+<script src="lang.js"></script>
+<script>
+  fetch('stats.json')
+    .then(response => {
+      if (!response.ok) throw new Error('Failed to load stats.json');
+      return response.json();
+    })
+    .then(data => {
+      const tbody = document.getElementById('pilot-stats-body');
+      tbody.innerHTML = ''; // Очищаем предыдущее
+
+      data.pilots.forEach(pilot => {
+        const row = document.createElement('tr');
+
+        row.innerHTML = `
+          <td>${pilot.name}</td>
+          <td>${pilot.hours}</td>
+          <td>${pilot.flights}</td>
+          <td data-translate="rank_${pilot.rank.toLowerCase().replace(' ', '_')}">${pilot.rank}</td>
+        `;
+
+        tbody.appendChild(row);
+      });
+    })
+    .catch(error => {
+      document.getElementById('pilot-stats-body').innerHTML =
+        `<tr><td colspan="4">Error loading statistics.</td></tr>`;
+      console.error(error);
+    });
+</script>
+
+</body>
+</html>

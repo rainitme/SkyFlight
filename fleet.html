@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-translate="fleet">Our Fleet</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Шапка */
+    header.header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 10px 20px;
+      background-color: #003366; /* совпадает с главной */
+      color: white;
+    }
+    header .logo {
+      position: absolute;
+      left: 20px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      cursor: default;
+    }
+    nav.nav {
+      display: flex;
+      gap: 20px;
+    }
+    nav.nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 6px 10px;
+      text-transform: none;
+    }
+    nav.nav a:hover,
+    nav.nav a.active {
+      background-color: #0077cc;
+      border-radius: 4px;
+    }
+
+    /* Кнопка переключения языка */
+    #lang-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background-color: #0055aa;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      font-size: 0.9rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 700;
+      z-index: 1000;
+      transition: background-color 0.3s ease;
+    }
+    #lang-toggle:hover {
+      background-color: #0077cc;
+    }
+
+    /* Центрируем заголовок и описание */
+    .info-section h2,
+    .info-section p {
+      text-align: center;
+      max-width: 700px;
+      margin: 20px auto;
+      color: #333;
+    }
+
+    /* Центрируем изображения */
+    .images {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo" data-translate="logo">My Virtual Airline</div>
+  <nav class="nav">
+    <a href="index.html" data-translate="home">Home</a>
+    <a href="about.html" data-translate="about">About</a>
+    <a href="fleet.html" data-translate="fleet" class="active">Fleet</a>
+    <a href="statistics.html" data-translate="statistics">Statistics</a>
+    <a href="destinations.html" data-translate="destinations">Destinations</a>
+    <a href="https://discord.gg/C7RzPVF7eA" target="_blank" rel="noopener noreferrer" data-translate="join_us">Join Us</a>
+  </nav>
+  <button id="lang-toggle">Русский</button>
+</header>
+
+<section class="info-section">
+  <h2 data-translate="fleet">Our Fleet</h2>
+  <p data-translate="fleet_text">Explore the aircraft we operate:</p>
+  <div class="images">
+    <img src="https://picsum.photos/seed/a320/400/200" alt="Airbus A320" />
+    <img src="https://picsum.photos/seed/b737/400/200" alt="Boeing 737" />
+    <img src="https://picsum.photos/seed/e190/400/200" alt="Embraer E190" />
+  </div>
+</section>
+
+<footer class="footer">
+  <p data-translate="footer_text">© 2025 My Virtual Airline • Powered by Open Source</p>
+</footer>
+
+<script src="lang.js"></script>
+</body>
+</html>

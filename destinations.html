@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-translate="title">My Virtual Airline</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* --- Шапка --- */
+    header.header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 14px 30px;
+      background-color: #003366;
+      color: white;
+      font-weight: 600;
+      user-select: none;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+      z-index: 10;
+    }
+    header .logo {
+      position: absolute;
+      left: 30px;
+      font-weight: 700;
+      font-size: 1.4rem;
+      cursor: default;
+      user-select: none;
+    }
+    nav.nav {
+      display: flex;
+      gap: 28px;
+      font-size: 1.05rem;
+    }
+    nav.nav a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 18px;
+      border-radius: 6px;
+      transition: background-color 0.25s ease;
+      font-weight: 600;
+    }
+    nav.nav a:hover,
+    nav.nav a.active {
+      background-color: #0077cc;
+      box-shadow: 0 0 8px #0077cc;
+    }
+
+    /* --- Кнопка переключения языка --- */
+    #lang-toggle {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      background-color: #0055aa;
+      color: white;
+      border: none;
+      padding: 9px 20px;
+      font-size: 1rem;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: 700;
+      z-index: 1000;
+      box-shadow: 0 0 8px rgba(0,85,170,0.8);
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    #lang-toggle:hover {
+      background-color: #0077cc;
+      box-shadow: 0 0 12px #0077cc;
+    }
+
+    /* --- Основной контейнер --- */
+    section.info-section {
+      max-width: 1300px;
+      margin: 60px auto 80px auto;
+      padding: 0 25px;
+      color: #222;
+    }
+
+    /* Заголовок и описание */
+    section.info-section > h2 {
+      font-size: 2.4rem;
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 12px;
+      color: #003366;
+      user-select: none;
+    }
+    section.info-section > p {
+      font-size: 1.25rem;
+      font-weight: 500;
+      text-align: center;
+      color: #555;
+      margin-bottom: 48px;
+      user-select: none;
+    }
+
+    /* --- Секция с городами и картой --- */
+    .routes-container-fullwidth {
+      display: flex;
+      gap: 50px;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: nowrap;
+    }
+
+    /* Список популярных городов */
+    .city-list {
+      flex: 1 1 360px;
+      max-width: 380px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .city-list p.title {
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: #004080;
+      user-select: none;
+    }
+    .text-bg-small {
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      height: 120px;
+      border-radius: 12px;
+      cursor: default;
+      font-weight: 700;
+      font-size: 1.35rem;
+      color: white;
+      display: flex;
+      align-items: flex-end;
+      padding: 18px 24px;
+      user-select: none;
+      box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.35);
+      transition: box-shadow 0.3s ease;
+      border: 2px solid transparent;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+    }
+    .text-bg-small:hover {
+      box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.55);
+      border-color: #0077cc;
+    }
+
+    /* Карта */
+    .map-container {
+      flex: 2 1 750px;
+      min-width: 320px;
+      height: 480px;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      transition: box-shadow 0.3s ease;
+    }
+    .map-container:hover {
+      box-shadow: 0 15px 45px rgba(0,0,0,0.2);
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* --- Адаптив --- */
+    @media (max-width: 1100px) {
+      .routes-container-fullwidth {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
+      }
+      .map-container {
+        flex: 1 1 100%;
+        height: 360px;
+        max-width: 720px;
+        margin-top: 30px;
+      }
+      .city-list {
+        max-width: 720px;
+        flex: 1 1 100%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header.header {
+        padding: 12px 16px;
+      }
+      nav.nav {
+        gap: 14px;
+        font-size: 0.9rem;
+      }
+      nav.nav a {
+        padding: 6px 12px;
+      }
+      #lang-toggle {
+        padding: 6px 14px;
+        font-size: 0.85rem;
+      }
+      section.info-section {
+        margin: 40px 15px 60px 15px;
+        padding: 0 10px;
+      }
+      section.info-section > h2 {
+        font-size: 1.8rem;
+      }
+      section.info-section > p {
+        font-size: 1rem;
+        margin-bottom: 32px;
+      }
+      .text-bg-small {
+        height: 100px;
+        font-size: 1.1rem;
+        padding: 14px 18px;
+      }
+      .map-container {
+        height: 280px;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo" data-translate="logo">My Virtual Airline</div>
+  <nav class="nav" role="navigation" aria-label="Primary Navigation">
+    <a href="index.html" data-translate="home">Home</a>
+    <a href="about.html" data-translate="about">About</a>
+    <a href="fleet.html" data-translate="fleet">Fleet</a>
+    <a href="statistics.html" data-translate="statistics">Statistics</a>
+    <a href="destinations.html" class="active" data-translate="destinations">Destinations</a>
+    <a href="https://discord.gg/C7RzPVF7eA" target="_blank" rel="noopener noreferrer" data-translate="join_us">Join Us</a>
+  </nav>
+  <button id="lang-toggle" aria-label="Switch language">Русский</button>
+</header>
+
+<section class="info-section" role="main">
+  <h2 data-translate="our_flight_routes">Our Flight Routes</h2>
+  <p data-translate="popular_destinations_desc">Explore our most popular destinations and discover new adventures.</p>
+
+  <div class="routes-container-fullwidth">
+    <div class="city-list" aria-label="Popular destinations list">
+      <p class="title" data-translate="popular_destinations">Наши популярные направления:</p>
+      <div class="text-bg-small" style="background-image: url('dubai1.webp');" data-translate="Dubai">Dubai</div>
+      <div class="text-bg-small" style="background-image: url('ssh.jpg');" data-translate="Sheremetyevo">Sheremetyevo</div>
+      <div class="text-bg-small" style="background-image: url('irks.jpg');" data-translate="Irkutsk">Irkutsk</div>
+      <!-- Добавляй маршруты сюда -->
+    </div>
+
+    <div class="map-container" aria-label="Flight routes map">
+      <iframe
+        src="https://www.google.com/maps/d/u/0/embed?mid=1yuPBiyezmSVawPJS04NW-QSA0xL0BH0&ehbc=2E312F"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Flight Routes Map"
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p data-translate="footer_text">© 2025 My Virtual Airline • Powered by Open Source</p>
+</footer>
+
+<script src="lang.js"></script>
+</body>
+</html>
