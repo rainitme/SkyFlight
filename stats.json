@@ -17,6 +17,12 @@
       "hours": 77,
       "flights": 26,
       "rank": "Second Officer"
+    },
+    {
+      "name": "KakoytoPilot",
+      "hours": 29000,
+      "flights": 120,
+      "rank": "Captain"
     }
   ],
   "last_updated": "2025-07-24T16:47:56.100932"

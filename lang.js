@@ -21,7 +21,7 @@ const translations = {
     fleet_text: "Explore the aircraft we operate:",
 
     // Destinations (destinations.html)
-    destinations_title: "Destinations - My Virtual Airline",
+    destinations_title: "Destinations",
     logo_text: "SkyFlight",
     our_flight_routes: "Our Flight Routes",
     popular_destinations: "Our popular destinations:",
@@ -31,7 +31,7 @@ const translations = {
     city_3: "City 3",
 
     // About (about.html)
-    about_title: "SkyFlight",
+    about_title: "About",
     about_heading: "About Us",
     about_text: "We are a dedicated team of virtual aviation enthusiasts offering a realistic and enjoyable flying experience for everyone.",
     our_mission: "Our Mission",
@@ -45,7 +45,7 @@ const translations = {
     offer_6: "Friendly Discord community",
 
     // Statistics (statistics.html)
-    statistics_title: "SkyFlight",
+    statistics_title: "Statistics",
     pilot_statistics: "Pilot Statistics",
     pilot_statistics_desc: "Explore detailed stats for our active pilots.",
     table_pilot: "Pilot",
@@ -78,7 +78,7 @@ const translations = {
     fleet_text: "Ознакомьтесь с нашим флотом:",
 
     // Destinations (destinations.html)
-    destinations_title: "Направления - SkyFlight",
+    destinations_title: "Направления",
     logo_text: "SkyFlight",
     our_flight_routes: "Наши маршруты",
     popular_destinations: "Наши популярные направления:",
@@ -88,7 +88,7 @@ const translations = {
     city_3: "Иркутск",
 
     // About (about.html)
-    about_title: "О нас - SkyFlight",
+    about_title: "О нас",
     about_heading: "О нас",
     about_text: "Мы — команда энтузиастов виртуальной авиации, предлагающая реалистичный и увлекательный опыт полетов для всех.",
     our_mission: "Наша миссия",
@@ -102,7 +102,7 @@ const translations = {
     offer_6: "Дружелюбное сообщество Discord",
 
     // Statistics (statistics.html)
-    statistics_title: "Статистика - SkyFlight",
+    statistics_title: "Статистика",
     pilot_statistics: "Статистика пилотов",
     pilot_statistics_desc: "Подробная статистика наших активных пилотов.",
     table_pilot: "Пилот",
