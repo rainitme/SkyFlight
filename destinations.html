@@ -19,6 +19,7 @@
       user-select: none;
       box-shadow: 0 3px 8px rgba(0,0,0,0.3);
       z-index: 10;
+      flex-wrap: wrap;
     }
     header .logo {
       position: absolute;
@@ -32,6 +33,8 @@
       display: flex;
       gap: 28px;
       font-size: 1.05rem;
+      flex-wrap: wrap;
+      justify-content: center;
     }
     nav.nav a {
       color: white;
@@ -78,7 +81,6 @@
       color: #222;
     }
 
-    /* Заголовок и описание */
     section.info-section > h2 {
       font-size: 2.4rem;
       font-weight: 900;
@@ -96,7 +98,7 @@
       user-select: none;
     }
 
-    /* --- Секция с городами и картой --- */
+    /* --- Секция с маршрутами --- */
     .routes-container-fullwidth {
       display: flex;
       gap: 50px;
@@ -105,7 +107,6 @@
       flex-wrap: nowrap;
     }
 
-    /* Список популярных городов */
     .city-list {
       flex: 1 1 360px;
       max-width: 380px;
@@ -113,6 +114,7 @@
       flex-direction: column;
       gap: 24px;
     }
+
     .city-list p.title {
       font-weight: 700;
       font-size: 1.3rem;
@@ -120,8 +122,8 @@
       color: #004080;
       user-select: none;
     }
+
     .text-bg-small {
-      position: relative;
       background-size: cover;
       background-position: center;
       height: 120px;
@@ -139,12 +141,12 @@
       border: 2px solid transparent;
       text-shadow: 0 2px 5px rgba(0,0,0,0.8);
     }
+
     .text-bg-small:hover {
       box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.55);
       border-color: #0077cc;
     }
 
-    /* Карта */
     .map-container {
       flex: 2 1 750px;
       min-width: 320px;
@@ -164,7 +166,7 @@
       display: block;
     }
 
-    /* --- Адаптив --- */
+    /* --- Адаптивность --- */
     @media (max-width: 1100px) {
       .routes-container-fullwidth {
         flex-wrap: wrap;
@@ -183,40 +185,52 @@
       }
     }
 
-    @media (max-width: 600px) {
-      header.header {
-        padding: 12px 16px;
+    @media (max-width: 768px) {
+      .routes-container-fullwidth {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
       }
+
       nav.nav {
-        gap: 14px;
-        font-size: 0.9rem;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
       }
-      nav.nav a {
-        padding: 6px 12px;
+
+      section.info-section > h2 {
+        font-size: 2rem;
       }
+      section.info-section > p {
+        font-size: 1.1rem;
+        margin-bottom: 32px;
+      }
+
+      .text-bg-small {
+        height: 100px;
+        font-size: 1.15rem;
+        padding: 14px 18px;
+      }
+
+      .map-container {
+        height: 280px;
+        width: 100%;
+        max-width: 100%;
+      }
+
       #lang-toggle {
         padding: 6px 14px;
         font-size: 0.85rem;
       }
-      section.info-section {
-        margin: 40px 15px 60px 15px;
-        padding: 0 10px;
-      }
-      section.info-section > h2 {
-        font-size: 1.8rem;
-      }
-      section.info-section > p {
-        font-size: 1rem;
-        margin-bottom: 32px;
-      }
-      .text-bg-small {
-        height: 100px;
+    }
+
+    @media (max-width: 480px) {
+      header .logo {
         font-size: 1.1rem;
-        padding: 14px 18px;
+        left: 10px;
       }
-      .map-container {
-        height: 280px;
-        max-width: 100%;
+      nav.nav {
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -246,7 +260,6 @@
       <div class="text-bg-small" style="background-image: url('dubai1.webp');" data-translate="Dubai">Dubai</div>
       <div class="text-bg-small" style="background-image: url('ssh.jpg');" data-translate="Sheremetyevo">Sheremetyevo</div>
       <div class="text-bg-small" style="background-image: url('irks.jpg');" data-translate="Irkutsk">Irkutsk</div>
-      <!-- Добавляй маршруты сюда -->
     </div>
 
     <div class="map-container" aria-label="Flight routes map">

@@ -19,6 +19,7 @@
       cursor: pointer;
       z-index: 1000;
       transition: background-color 0.3s ease;
+      user-select: none;
     }
     #lang-toggle:hover {
       background-color: #0077cc;
@@ -32,6 +33,9 @@
       padding: 10px 20px;
       background-color: #003366;
       color: white;
+      user-select: none;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+      z-index: 10;
     }
 
     header .logo {
@@ -39,6 +43,8 @@
       left: 20px;
       font-weight: 700;
       font-size: 1.2rem;
+      cursor: default;
+      user-select: none;
     }
 
     nav.nav {
@@ -52,12 +58,15 @@
       font-weight: 600;
       font-size: 1rem;
       padding: 6px 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+      user-select: none;
     }
 
     nav.nav a:hover,
     nav.nav a.active {
       background-color: #0077cc;
-      border-radius: 4px;
+      box-shadow: 0 0 8px #0077cc;
     }
 
     .main {
@@ -69,7 +78,7 @@
       min-height: 100vh;
       position: relative;
       overflow: hidden;
-      /* transition removed */
+      user-select: none;
     }
 
     .main h1 {
@@ -95,6 +104,7 @@
       border-radius: 6px;
       transition: background-color 0.3s ease, transform 0.2s ease;
       font-weight: 600;
+      user-select: none;
     }
 
     .main-btn:hover {
@@ -102,7 +112,7 @@
       transform: scale(1.05);
     }
 
-    /* Стрелки */
+    /* Стрелки слайдера */
     .slider-controls {
       position: absolute;
       top: 50%;
@@ -114,10 +124,12 @@
       pointer-events: none;
       opacity: 0;
       transition: opacity 0.4s ease;
+      user-select: none;
     }
 
     .main:hover .slider-controls {
       opacity: 1;
+      pointer-events: auto;
     }
 
     .slider-btn {
@@ -145,6 +157,35 @@
       position: relative;
       bottom: 0;
       width: 100%;
+      user-select: none;
+    }
+
+    /* Мобильная адаптация */
+    @media (max-width: 480px) {
+      .main h1 {
+        font-size: 32px;
+        margin-bottom: 180px;
+      }
+      .main p {
+        font-size: 16px;
+      }
+      .slider-btn {
+        font-size: 2rem;
+      }
+      header .logo {
+        font-size: 1rem;
+        left: 10px;
+      }
+      #lang-toggle {
+        top: 8px;
+        right: 8px;
+        padding: 6px 12px;
+        font-size: 0.8rem;
+      }
+      nav.nav a {
+        padding: 5px 8px;
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
@@ -152,21 +193,21 @@
 
 <header class="header">
   <div class="logo" data-translate="logo">My Virtual Airline</div>
-  <nav class="nav">
-    <a href="index.html" data-translate="home">Home</a>
+  <nav class="nav" role="navigation" aria-label="Primary Navigation">
+    <a href="index.html" data-translate="home" class="active">Home</a>
     <a href="about.html" data-translate="about">About</a>
     <a href="fleet.html" data-translate="fleet">Fleet</a>
     <a href="statistics.html" data-translate="statistics">Statistics</a>
     <a href="destinations.html" data-translate="destinations">Destinations</a>
     <a href="https://discord.gg/C7RzPVF7eA" target="_blank" rel="noopener noreferrer" data-translate="join_us">Join Us</a>
   </nav>
-  <button id="lang-toggle">Русский</button>
+  <button id="lang-toggle" aria-label="Switch language">Русский</button>
 </header>
 
 <section class="main" id="main-section">
   <div class="slider-controls">
-    <button class="slider-btn" id="prevBtn">&#10094;</button>
-    <button class="slider-btn" id="nextBtn">&#10095;</button>
+    <button class="slider-btn" id="prevBtn" aria-label="Previous background">&#10094;</button>
+    <button class="slider-btn" id="nextBtn" aria-label="Next background">&#10095;</button>
   </div>
   <h1 data-translate="welcome_title">Welcome Aboard</h1>
   <p data-translate="welcome_text">Experience the skies with professionalism and passion.</p>
@@ -182,7 +223,7 @@
 <script>
   const backgrounds = [
     'adbanner5.png',
-    'bannerad3.png',
+    'bannerad3.png'
   ];
 
   let currentBgIndex = 0;
