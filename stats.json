@@ -2,28 +2,28 @@
   "pilots": [
     {
       "name": "JohnDoe",
-      "hours": 23767,
-      "flights": 11848,
+      "hours": 23770,
+      "flights": 11850,
       "rank": "Captain"
     },
     {
       "name": "JaneSmith",
-      "hours": 23708,
-      "flights": 11924,
+      "hours": 23711,
+      "flights": 11926,
       "rank": "First Officer"
     },
     {
       "name": "AlexPilot",
-      "hours": 23765,
-      "flights": 11674,
+      "hours": 23768,
+      "flights": 11675,
       "rank": "Second Officer"
     },
     {
       "name": "KakoytoPilot",
-      "hours": 52580,
-      "flights": 11974,
+      "hours": 52583,
+      "flights": 11976,
       "rank": "Captain"
     }
   ],
-  "last_updated": "2026-08-22T09:16:56.176319"
+  "last_updated": "2026-08-22T09:47:45.214775"
 }
